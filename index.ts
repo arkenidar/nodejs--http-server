@@ -10,7 +10,7 @@ let server = express()
 import { Connection, createConnection } from "mysql2/promise"
 
 const connection: Connection = await createConnection({
-    host: "localhost",
+    host: "127.0.0.1",
     user: "root",
     password: "password",
     database: "mydb",
