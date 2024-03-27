@@ -1,7 +1,8 @@
 {
   "type": "module",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mysql2": "^3.9.3"
   },
   "name": "nodejs--http-server",
   "version": "1.0.0",
