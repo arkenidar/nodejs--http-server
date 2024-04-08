@@ -4,10 +4,16 @@ export default router
 
 import { Connection } from "mysql2/promise"
 
-// curl http://localhost:8080/?name1=12345
-router.get("/", (request, response) => {
+// curl http://localhost:8080/query?name1=queried
+router.get("/query", (request, response) => {
     // HTTP request & HTTP response
     response.json(request.query)
+})
+
+// curl -X POST -d "name1=embodied" http://localhost:8080/body
+router.post("/body", (request, response) => {
+    // HTTP request & HTTP response
+    response.json(request.body)
 })
 
 // curl http://localhost:8080/sql
