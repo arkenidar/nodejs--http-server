@@ -3,6 +3,19 @@
 // npm i --save-dev @types/express
 import express from 'express';
 let server = express();
+// https://www.npmjs.com/package/mysql2
+import { createConnection } from "mysql2/promise";
+const connection = await createConnection({
+    host: "127.0.0.1",
+    user: "root",
+    password: "password",
+    database: "mydb",
+});
+server.set("connection", connection);
+const sql = 'select ?+? as result';
+const params = [11, 33];
+const [rows] = await connection.execute(sql, params);
+console.log("result is", rows[0].result);
 import router from './routes.js';
 server.use("/", router);
 // nodemon .
