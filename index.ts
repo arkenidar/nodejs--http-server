@@ -16,8 +16,6 @@ const connection: Connection = await createConnection({
     database: "mydb",
 })
 
-server.set("connection", connection)
-
 const sql = 'select ?+? as result'
 const params = [11, 33]
 const [rows] = await connection.execute<any[]>(sql, params)
@@ -26,8 +24,8 @@ console.log("result is", rows[0].result)
 import { urlencoded } from 'express'
 server.use(urlencoded({ extended: true }))
 
-import router from './routes.js'
-server.use("/", router)
+import build_router_root from './routes.js'
+server.use("/", build_router_root(connection))
 
 // nodemon .
 // open http://localhost:8080
